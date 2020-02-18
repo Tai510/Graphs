@@ -36,20 +36,31 @@ class Graph:
             return self.vertices[vertex_id]
         return None
 
+
+    #Breadth First Traversal
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
+        # Create an empty queue        
         q = Queue()
+        # Add the starting vertex_id to the queue
         q.enqueue(starting_vertex)
+        # Create an empty set to store visited nodes
         visited = set()
+        # While the queue is not empty...
+        # Dequeue the first vertex
         while q.size() > 0:
             vertex = q.dequeue()
+            # Check if its's been visited
+            # If it has not been vistited...
             if vertex not in visited:
                 print(vertex)
+                # Mark it as vistied
                 visited.add(vertex)
                 for neighbor in self.vertices[vertex]:
+                    # Then add all neighbours to the back of the queue
                     q.enqueue(neighbor)
 
     def dft(self, starting_vertex):
@@ -58,7 +69,7 @@ class Graph:
         beginning from starting_vertex.
         """
         # Create an empty stack 
-        s = Stack()
+        s = Stack() 
         # Push the starting vertex_id to the stack
         s.push(starting_vertex)
         # Create an empty set to store visited vertices/nodes
